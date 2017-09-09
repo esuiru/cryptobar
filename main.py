@@ -33,7 +33,7 @@ class Cryptobar(rumps.App):
         for coin in CURRENCIES:
             k.append(fetch_api(coin))
 
-        self.title = ' | '.join("{0}: {1}".format(x[0], x[1]) for x in k)
+        self.title = ' ⚡️ '.join("{0}: {1}".format(x[0], x[1]) for x in k)
 
 if __name__ == "__main__":
     Cryptobar().run()
