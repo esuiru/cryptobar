@@ -16,7 +16,15 @@ $ cd cryptobar
 $ python3 setup.py py2app -A
 ```
 
-A `dist` folder has been created and contain the basic app (the same as the one provided within the repository).
+**NOTE:** you will need `py2app` to build the app in standalone mode. You can find the instructions here https://py2app.readthedocs.io/en/latest/install.html#installing-with-pip. Also, you will need the packages listed in the requirements.txt file.
+
+```
+$ pip3 install -r requirements.txt
+```
+
+You can use pip to install them directly.
+
+Once everything is installed and you have built the project, a `dist` folder has been created and contain the basic app (the same as the one provided within the repository).
 
 In order to track other cryptocurrencies, open `main.py` with your favorite editor and edit the following:
 
