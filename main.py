@@ -8,8 +8,6 @@
 import rumps
 import requests
 
-rumps.debug_mode(True)
-
 # Change the values of this array to the coins you are currently tracking.
 CURRENCIES = ['monetha', 'ethereum', 'bitcoin']
 
