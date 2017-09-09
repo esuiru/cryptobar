@@ -26,6 +26,11 @@ In order to track other cryptocurrencies, open `main.py` with your favorite edit
 
 Change this list with any cryptocurrency you want that is listed on https://coinmarketcap.com/assets/.
 
+Then you will need to build the app again:
+```
+$ python3 setup.py py2app -A
+```
+
 ## Other
 This README is a work in progress.
 
