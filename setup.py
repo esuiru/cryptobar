@@ -1,8 +1,8 @@
 """
 # CODE BY: commit-master 🚀
 # MADE ON: Saturday, September 9, 2017
-# Lorem ipsum et dolor amet. Su colores et un ich bin un berliner ya
-# du bist la description of el project right there.
+# This setup allows you to build your own custom app to track your own
+# favourite cryptocurrencies.
 """
 
 from setuptools import setup

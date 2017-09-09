@@ -1,8 +1,8 @@
 """
 # CODE BY: commit-master 🚀
 # MADE ON: Saturday, September 9, 2017
-# Lorem ipsum et dolor amet. Su colores et un ich bin un berliner ya
-# du bist la description of el project right there.
+# This macOS app is a simple status bar plugin that allows you to track your
+# favourite cryptocurrencies in real time.
 """
 
 import rumps
