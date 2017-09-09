@@ -31,6 +31,10 @@ Then you will need to build the app again:
 $ python3 setup.py py2app -A
 ```
 
+## Quit
+In order to quit the application, simply click on the status bar and a `Quit` option will show:
+![quit](./assets/quit.png)
+
 ## Other
 This README is a work in progress.
 
