@@ -15,7 +15,7 @@ CURRENCIES = ['monetha', 'ethereum', 'bitcoin']
 
 def fetch_api(coin):
     """ This function goes and fetch us the latest coins data """
-    resp = requests.get('https://api.coinmarketcap.com/v1/ticker/' + coin)    
+    resp = requests.get('https://api.coinmarketcap.com/v1/ticker/' + coin)
     for key in resp.json():
         print(key)
         return [key["symbol"], key["price_usd"]]
@@ -35,8 +35,7 @@ class Cryptobar(rumps.App):
         for coin in CURRENCIES:
             k.append(fetch_api(coin))
 
-        print(k)
-      
+        self.title = ' | '.join("{0}: {1}".format(x[0], x[1]) for x in k)
 
 if __name__ == "__main__":
     Cryptobar().run()
