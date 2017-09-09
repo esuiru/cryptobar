@@ -16,7 +16,7 @@ def fetch_api(coin):
     resp = requests.get('https://api.coinmarketcap.com/v1/ticker/' + coin)
     for key in resp.json():
         print(key)
-        return [key["symbol"], key["price_usd"]]
+        return [key["symbol"], key["price_usd"] + "$"]
 
 class Cryptobar(rumps.App):
     """ This is the core component of the app, this class will be used to build
