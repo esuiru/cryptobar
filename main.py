@@ -15,7 +15,6 @@ def fetch_api(coin):
     """ This function goes and fetch us the latest coins data """
     resp = requests.get('https://api.coinmarketcap.com/v1/ticker/' + coin)
     for key in resp.json():
-        print(key)
         return [key["symbol"], key["price_usd"] + "$"]
 
 class Cryptobar(rumps.App):
@@ -24,7 +23,7 @@ class Cryptobar(rumps.App):
     def __init__(self):
         super(Cryptobar, self).__init__("Loading...")
 
-    @rumps.timer(6)
+    @rumps.timer(6 * len(CURRENCIES))
     def ticker(self, _):
         """ This ticker function allows us to update the price in the StatusBar
         every seconds to stay on top of the latest charts. """
