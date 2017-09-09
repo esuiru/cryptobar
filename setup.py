@@ -14,10 +14,12 @@ OPTIONS = {
     'plist': {
         'LSUIElement': True,
     },
+    'iconfile': './assets/app_logo.icns',
     'packages': ['rumps', 'requests'],
 }
 
 setup(
+    name="Cryptobar",
     app=APP,
     data_files=DATA_FILES,
     options={'py2app': OPTIONS},
