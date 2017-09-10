@@ -8,14 +8,19 @@
 import rumps
 import requests
 
+API_URL = 'https://api.coinmarketcap.com/v1/ticker/'
+
 # Change the values of this array to the coins you are currently tracking.
+# You can change the FIAT variable to the desired currency you want to convert
+# the cryptos to.
 CURRENCIES = ['monetha', 'ethereum', 'bitcoin']
+FIAT = {'symbol': '$', 'value': 'USD'}
 
 def fetch_api(coin):
     """ This function goes and fetch us the latest coins data """
-    resp = requests.get('https://api.coinmarketcap.com/v1/ticker/' + coin)
+    resp = requests.get(API_URL + coin + '/?convert=' + FIAT['value'])
     for key in resp.json():
-        return [key["symbol"], key["price_usd"] + "$"]
+        return [key["symbol"], key["price_usd"] + FIAT['symbol']]
 
 class Cryptobar(rumps.App):
     """ This is the core component of the app, this class will be used to build
