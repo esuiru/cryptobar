@@ -7,7 +7,7 @@ It looks like the following:
 ![preview](./assets/preview.png)
 
 ```
-😱 means that the currency as dropped in value
+😱 means that the currency has dropped in value
 😐 means that the currency did not change in value
 🚀 means that the currency increased in value
 ```
