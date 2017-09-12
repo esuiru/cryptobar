@@ -79,15 +79,15 @@
 	<key>PyRuntimeLocations</key>
 	<array>
 		<string>@executable_path/../Frameworks/Python.framework/Versions/3.6/Python</string>
-		<string>/usr/local/Cellar/python3/3.6.2/Frameworks/Python.framework/Versions/3.6/Python</string>
+		<string>/Library/Frameworks/Python.framework/Versions/3.6/Python</string>
 	</array>
 	<key>PythonInfoDict</key>
 	<dict>
 		<key>PythonExecutable</key>
-		<string>/usr/local/opt/python3/bin/python3.6</string>
+		<string>/Library/Frameworks/Python.framework/Versions/3.6/bin/python3</string>
 		<key>PythonLongVersion</key>
-		<string>3.6.2 (default, Jul 17 2017, 16:44:45) 
-[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)]</string>
+		<string>3.6.1 (v3.6.1:69c0db5050, Mar 21 2017, 01:21:04) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)]</string>
 		<key>PythonShortVersion</key>
 		<string>3.6</string>
 		<key>py2app</key>
