@@ -6,6 +6,12 @@ Cryptobar is a macOS status bar app that track your favorite cryptocurrencies �
 It looks like the following:
 ![preview](./assets/preview.png)
 
+```
+😱 means that the currency as dropped in value
+😐 means that the currency did not change in value
+🚀 means that the currency increased in value
+```
+
 You can track all your favorite cryptocurrences in **real time** within the blink of an eye to keep your producitivity.
 
 ## Installation
