@@ -362,7 +362,7 @@ def _path_inject(paths):
     sys.path[:0] = paths
 
 
-_path_inject(['/Users/bakaking/Desktop/crypto/cryptobar'])
+_path_inject(['/Users/paul/Desktop/prs/bar'])
 
 
 import re
@@ -414,7 +414,7 @@ def _run():
     exec(compile(source, script, 'exec'), globals(), globals())
 
 
-DEFAULT_SCRIPT='/Users/bakaking/Desktop/crypto/cryptobar/main.py'
+DEFAULT_SCRIPT='/Users/paul/Desktop/prs/bar/main.py'
 SCRIPT_MAP={}
 try:
     _run()
