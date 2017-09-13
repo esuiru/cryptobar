@@ -14,7 +14,7 @@ VALUES = {}
 # Change the values of this array to the coins you are currently tracking.
 # You can change the FIAT variable to the desired currency you want to convert
 # the cryptos to.
-CURRENCIES = ['monetha', 'ethereum', 'bitcoin']
+CURRENCIES = ['monetha', '0x', 'ethereum']
 FIAT = {'symbol': '$', 'value': 'USD'}
 
 def fetch_api(coin):
@@ -22,6 +22,18 @@ def fetch_api(coin):
     resp = requests.get(API_URL + coin + '/?convert=' + FIAT['value'])
     for key in resp.json():
         return [key["symbol"], float(key["price_usd"])]
+
+def check_fluctuation(values):
+    if (values[-3][1] > values[-2][1]) and (values[-2][1] > values[-1][1]):
+        return '💀'
+    elif (values[-2][1] > values[-1][1]):
+        return '😱'
+    elif (values[-3][1] < values[-2][1]) and (values[-2][1] < values[-1][1]):
+        return '🔥'
+    elif (values[-2][1] < values[-2][1]):
+        return '🚀'
+    else:
+        return '😐'
 
 class Cryptobar(rumps.App):
     """ This is the core component of the app, this class will be used to build
@@ -34,22 +46,20 @@ class Cryptobar(rumps.App):
         """ This ticker function allows us to update the price in the StatusBar
         every seconds to stay on top of the latest charts. """
         global VALUES
-        previous_values = dict(VALUES)
 
         for coin in CURRENCIES:
-            VALUES[coin] = fetch_api(coin)
-            previous_values.setdefault(coin, VALUES[coin])
+            VALUES.setdefault(coin, [])
+            if len(VALUES[coin]) == 3:
+                VALUES[coin] = VALUES[coin][1:] + [fetch_api(coin)]
+                VALUES[coin][-1].append(check_fluctuation(VALUES[coin]))
+            else:
+                VALUES[coin].append(fetch_api(coin))
+                VALUES[coin][-1].append('🤔')
 
-            fluctuation = '😱' if previous_values[coin][1] > VALUES[coin][1] \
-                          else '🚀' if previous_values[coin][1] < VALUES[coin][1] \
-                          else '😐'
-
-            VALUES[coin].append(fluctuation)
-
-        self.title = '▲  '.join("{0}: {1}{2} 〈{3}〉".format(value[0],
-                                                            value[1],
+        self.title = '▲  '.join("{0}: {1}{2} 〈{3}〉".format(x[-1][0],
+                                                            x[-1][1],
                                                             FIAT['symbol'],
-                                                            value[2]) for value in VALUES.values())
+                                                            x[-1][2]) for x in VALUES.values())
 
 if __name__ == "__main__":
     Cryptobar().run()
