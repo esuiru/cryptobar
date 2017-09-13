@@ -7,9 +7,11 @@ It looks like the following:
 ![preview](./assets/preview.png)
 
 ```
+💀 means your currency is currently being dumped, sorry.
 😱 means that the currency has dropped in value
 😐 means that the currency did not change in value
 🚀 means that the currency increased in value
+🔥 means your currency is currently being pumped, I take donations.
 ```
 
 You can track all your favorite cryptocurrences in **real time** within the blink of an eye to keep your producitivity.
@@ -44,6 +46,11 @@ Then you will need to build the app again:
 ```
 $ python3 setup.py py2app -A
 ```
+
+## Change currency display
+
+You can convert from FIAT to BTC display. Just click on the menubar and pick either `Use BTC metric` or `Use {fiat} metric`
+![convert](./assets/quit.png)
 
 ## Quit
 In order to quit the application, simply click on the status bar and a `Quit` option will show:
