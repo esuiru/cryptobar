@@ -5,7 +5,7 @@
 # favourite cryptocurrencies in real time.
 """
 
-import rumps
+from rumps import *
 import requests
 
 API_URL = 'https://api.coinmarketcap.com/v1/ticker/'
@@ -47,16 +47,9 @@ class Cryptobar(rumps.App):
     def convert_currency(self, _):
         """ Small function to convert from FIAT currency to BTC currency. """
         global FIAT
-        if FIAT['value'] == 'BTC':
-            _.title = 'Use BTC metric'
-            FIAT['value'] = 'USD'
-            FIAT['symbol'] = '$'
-
-        else:
-            _.title = 'Use USD metric'
-            FIAT['value'] = 'BTC'
-            FIAT['symbol'] = '₿'
-
+        _.title = 'Use BTC metric' if FIAT['value'] == 'BTC' else 'Use USD metric'
+        FIAT['value'] = 'USD' if FIAT['value'] == 'BTC' else 'BTC'
+        FIAT['symbol'] = '₿' if FIAT['value'] == 'BTC' else '$'
         self.update_values(_)
 
     @rumps.timer(6 * len(CURRENCIES))
@@ -79,17 +72,13 @@ class Cryptobar(rumps.App):
     def update_values(self, _):
         """ This function will print the correct title according to the chosen
         currency to display. """
-        if FIAT['value'] == 'BTC':
-            self.title = '▲  '.join("{0}: {1:.8f}{2} 〈{3}〉".format(x[-1][0],
-                                                            x[-1][2],
-                                                            FIAT['symbol'],
-                                                            x[-1][3]) for x in VALUES.values())
-        else:
-            self.title = '▲  '.join("{0}: {1}{2} 〈{3}〉".format(x[-1][0],
-                                                            x[-1][1],
-                                                            FIAT['symbol'],
-                                                            x[-1][3]) for x in VALUES.values())
-
+        self.title = '▲  '\
+        .join("{0}: {1:s}{2} 〈{3}〉".format(
+            x[-1][0],
+            "{0:.8f}".format(x[-1][2]) if FIAT['value'] == 'BTC' else str(x[-1][1]),
+            FIAT['symbol'],
+            x[-1][3]) for x in VALUES.values()
+        )
 
 if __name__ == "__main__":
     Cryptobar().run()
